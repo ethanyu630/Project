@@ -26,90 +26,90 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <?php
 
 //新加入會員
-  session_start(); 
-		if(isset($_POST["Upas2"])){
-				 @$uid=$_POST["uid"];
-				 @$Upas=$_POST["Upas"];
-				
-				 $link = mysql_connect("localhost", "root", "");
-				 		if (!$link) die("建立資料連接失敗");
-				//開啟資料表
-				 $db_selected = mysql_select_db("coffee", $link);
-				if (!$db_selected) die("開啟資料庫失敗");
-			     mysql_query("SET NAMES UTF8");
-		         mysql_query("UPDATE `membdata` SET Upas='$Upas' WHERE uid='$uid'");
-		         
-	}
-    if(isset($_POST["register"])){
-				 @$uid=$_POST["uid"];
-				 @$Upas=$_POST["Upas"];
-				 @$Una=$_POST["Una"];
-				 @$uidun=$_POST["uidun"];
-				 @$Uya=$_POST["Uya"];
-				 @$Umo=$_POST["Umo"];
-				 @$uda=$_POST["uda"];
-				 @$ufri=$_POST["ufri"];
-				 @$Ucity=$_POST["Ucity"];
-				 @$Usec=$_POST["Usec"];
-				 @$uaddr=$_POST["uaddr"];
-				 @$Utel=$_POST["Utel"];
-				 @$umote=$_POST["umote"];
-				 @$uemai=$_POST["uemai"];
-		        //建立資料連接
-        		 $link = mysql_connect("localhost", "root", "");
-				 		if (!$link) die("建立資料連接失敗");
-				//開啟資料表
-				 $db_selected = mysql_select_db("coffee", $link);
-				if (!$db_selected) die("開啟資料庫失敗");
-			     mysql_query("SET NAMES UTF8");
-				 mysql_query("INSERT INTO membdata (`uid`, `Upas`, `Una`, `uidnu`, `Uya`, `Umo`, `uda`, `ufri`, `Ucity`, `Usec`, `uaddr`, `Utel`, `umote`, `uemai`) 
-				 		 VALUES ('$uid','$Upas','$Una','$uidun','$Uya','$Umo','$uda','$ufri','$Ucity',
-						 '$Usec','$uaddr','$Utel','$umote','$uemai')");
-						 }
-	
-	//執行登入
+session_start(); 
+if(isset($_POST["Upas2"])){
+		 @$uid=$_POST["uid"];
+		 @$Upas=$_POST["Upas"];
+		
+		 $link = mysql_connect("localhost", "root", "");
+				if (!$link) die("建立資料連接失敗");
+		//開啟資料表
+		 $db_selected = mysql_select_db("coffee", $link);
+		if (!$db_selected) die("開啟資料庫失敗");
+		 mysql_query("SET NAMES UTF8");
+		 mysql_query("UPDATE `membdata` SET Upas='$Upas' WHERE uid='$uid'");
+		 
+}
+if(isset($_POST["register"])){
+			 @$uid=$_POST["uid"];
+			 @$Upas=$_POST["Upas"];
+			 @$Una=$_POST["Una"];
+			 @$uidun=$_POST["uidun"];
+			 @$Uya=$_POST["Uya"];
+			 @$Umo=$_POST["Umo"];
+			 @$uda=$_POST["uda"];
+			 @$ufri=$_POST["ufri"];
+			 @$Ucity=$_POST["Ucity"];
+			 @$Usec=$_POST["Usec"];
+			 @$uaddr=$_POST["uaddr"];
+			 @$Utel=$_POST["Utel"];
+			 @$umote=$_POST["umote"];
+			 @$uemai=$_POST["uemai"];
+			//建立資料連接
+			 $link = mysql_connect("localhost", "root", "");
+					if (!$link) die("建立資料連接失敗");
+			//開啟資料表
+			 $db_selected = mysql_select_db("coffee", $link);
+			if (!$db_selected) die("開啟資料庫失敗");
+			 mysql_query("SET NAMES UTF8");
+			 mysql_query("INSERT INTO membdata (`uid`, `Upas`, `Una`, `uidnu`, `Uya`, `Umo`, `uda`, `ufri`, `Ucity`, `Usec`, `uaddr`, `Utel`, `umote`, `uemai`) 
+					 VALUES ('$uid','$Upas','$Una','$uidun','$Uya','$Umo','$uda','$ufri','$Ucity',
+					 '$Usec','$uaddr','$Utel','$umote','$uemai')");
+					 }
+
+//執行登入
 
 
-    if(!isset($_SESSION["membername"]) || ($_SESSION["membername"]=="")){
+if(!isset($_SESSION["membername"]) || ($_SESSION["membername"]=="")){
 
-		if(isset($_POST["uid"])&& isset($_POST["Upas"]) ){
-			$uid=$_POST["uid"];
-		    $Upas=$_POST["Upas"];
+	if(isset($_POST["uid"])&& isset($_POST["Upas"]) ){
+		$uid=$_POST["uid"];
+		$Upas=$_POST["Upas"];
+		
+		 //建立資料連接
+			 $link = mysql_connect("localhost", "root", "");
+					if (!$link) die("建立資料連接失敗");
+			//開啟資料表
+			 $db_selected = mysql_select_db("coffee", $link);
+			if (!$db_selected) die("開啟資料庫失敗");
+			 mysql_query("SET NAMES UTF8");
+			$sql="select * from membdata where uid ='$uid'";
+			//抓取登入數據
+			$result=mysql_query($sql,$link);
 			
-			 //建立資料連接
-        		 $link = mysql_connect("localhost", "root", "");
-				 		if (!$link) die("建立資料連接失敗");
-				//開啟資料表
-				 $db_selected = mysql_select_db("coffee", $link);
-				if (!$db_selected) die("開啟資料庫失敗");
-			     mysql_query("SET NAMES UTF8");
-				$sql="select * from membdata where uid ='$uid'";
-				//抓取登入數據
-				$result=mysql_query($sql,$link);
-				
-						while ($row = mysql_fetch_array($result))
-					{
-						$username= $row[0];			
-						$passwd= $row[1];
-						
-					}
-				
-			if(($_POST["uid"]==$username)&& ($_POST["Upas"]== $passwd) && $uid != ""){
-				
-				$_SESSION["membername"]=$username;
+					while ($row = mysql_fetch_array($result))
+				{
+					$username= $row[0];			
+					$passwd= $row[1];
+					
+				}
 			
-			}
+		if(($_POST["uid"]==$username)&& ($_POST["Upas"]== $passwd) && $uid != ""){
 			
-			header("location: single1.php");
-			
+			$_SESSION["membername"]=$username;
+		
 		}
 		
+		header("location: single1.php");
+		
 	}
-    //執行登出
-	if(isset($_GET["logout"]) && ($_GET["logout"]=="true")){
-		unset($_SESSION["membername"]);
-		header("location:single1.php");
-	}
+	
+}
+//執行登出
+if(isset($_GET["logout"]) && ($_GET["logout"]=="true")){
+	unset($_SESSION["membername"]);
+	header("location:single1.php");
+}
 ?>	
 </head>
 <body>
