@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>無標題文件</title>
+<style type="text/css">
+.rrr {
+	font-size: 14px;
+}
+</style></head>
+
+<body>
+<div class="hader">
+  <table width="99%" border="1" cellspacing="0" cellpadding="10">
+    <tr>
+      <th width="20%" align="left" valign="middle" scope="row">姓名</th>
+      <td colspan="5">林姿璇</td>
+      <td width="29%" rowspan="5"><img src="images/c-5.jpg" width="229" height="154"></td>
+    </tr>
+    <tr>
+      <th align="left" valign="middle" scope="row">單位別</th>
+      <td colspan="5">小老百姓部</td>
+    </tr>
+    <tr>
+      <th align="left" valign="middle" scope="row">年資</th>
+      <td colspan="5"><p>102天</p></td>
+    </tr>
+    <tr>
+      <th align="left" valign="middle" scope="row">假別天數</th>
+      <td width="14%"><span class="rrr">事假</span></td>
+      <td width="14%"><span class="rrr">病假</span></td>
+      <td width="14%"><span class="rrr">假公</span></td>
+      <td width="14%"><span class="rrr">年假:(餘)7</span></td>
+      <td width="14%"><span class="rrr">其他假別</span></td>
+    </tr>
+    <tr>
+      <th align="left" valign="middle" scope="row"><span class="rrr">出差天數</span></th>
+      <td colspan="5"><span class="rrr">0</span></td>
+    </tr>
+  </table>
+</div>
+<br>
+<div class="body">
+ <table width="99%" border="1" cellspacing="0" cellpadding="10">
+  <tr><td>
+<center><h2>差勤管理系統</h2></center>
+  <form name="form1" method="post" action="">
+    <h2>休假申請</h2>
+    <p>請選擇假別
+      <label for="offday"></label>
+      <select name="offday" id="offday">
+        <option value="&lt;請選擇&gt;">&lt;請選擇&gt;</option>
+        <option value="年假">年假</option>
+        <option value="事假">事假</option>
+        <option value="病假">病假</option>
+        <option value="公假">公假</option>
+        <option value="喪假">喪假</option>
+      </select>
+    </p>
+    <p>選擇天數
+      <label for="days"></label>
+      <select name="days" id="days">
+        <option value="&lt;請選擇&gt;">&lt;請選擇&gt;</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+      </select>
+      *7日以上假期請<a href="#">點此</a>填寫主管同意單 </p>
+    <p  onClick="confirm('申請休假確認：\n\n假別：'+form1.offday.value+'\n天數：'+form1.days.value)">
+      <input type="submit" name="set" id="set" value="送出">
+      <input type="reset" name="res" id="res" value="重設">
+    </p>
+    
+  </form></td> </tr>
+  </table>
+</div>
+</body>
+</html>
